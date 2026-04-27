@@ -1,6 +1,22 @@
+import { useState } from "react";
 import styles from "./login.module.css";
+import { login } from "../api/authService";
 //ESTRUTURA PADRÃO!
 const Login = () => {
+
+    const [email, setEmail] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
+
+    function autenticar(e: React.FormEvent<HTMLFormElement>){
+        e.preventDefault();
+        try{
+            login(email, senha);
+            console.log("logado")
+        }catch(e: any){
+            alert(e.message);
+        }
+    }
+
     return (
         <>
             <main id={styles.main}>
@@ -10,11 +26,12 @@ const Login = () => {
                     <form id={styles.formulario}>
                         <div className={styles.campo_form}>
                             <label htmlFor="email">E-mail</label>
-                            <input type="text" name="email" placeholder="email@exemplo.com" required />
-                        </div>
+                            <input type="text" name="email" placeholder="email@exemplo.com" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            
+                       </div>
                         <div className={styles.campo_form}>
                             <label htmlFor="senha">Senha</label>
-                            <input type="password" name="senha" placeholder="*******" required />
+                            <input type="password" name="senha" placeholder="*******" required value={senha} onChange={(e) => setSenha(e.target.value)} />
                         </div>
                         <a id={styles.esq_senha} href="">Esqueceu sua senha?</a>
                         <button>Entrar</button>
