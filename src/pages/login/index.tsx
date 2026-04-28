@@ -27,6 +27,7 @@ const Login = () => {
                         <div className={styles.campo_form}>
                             <label htmlFor="email">E-mail</label>
                             <input type="text" name="email" placeholder="email@exemplo.com" required value={email} onChange={(e) => setEmail(e.target.value)}/>
+                            {/* Pega cada input do ususario e armazea automaticamente */}
                             
                        </div>
                         <div className={styles.campo_form}>
