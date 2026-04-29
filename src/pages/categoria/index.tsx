@@ -3,7 +3,8 @@ import styles from './categoria.module.css'
 import Link from 'next/link'
 import SubHeader from "@/components/sub-header/sub-header"
 import { useState } from "react"
-import { cadastrarCategoria } from "../api/categoriaService"
+import { cadastrarCategoria, listarCategoria } from "../api/categoriaService"
+import { ToastContainer, toast } from 'react-toastify';
 
 const Categoria = () => {
 
@@ -23,6 +24,7 @@ const Categoria = () => {
     // console.log(categoria);
     return(
         <>
+            <ToastContainer/>
             <SubHeader/>
                 <main id={styles.main}>
                     <h1>CRIAR CATEGORIA</h1>
@@ -44,3 +46,4 @@ const Categoria = () => {
 }
 
 export default Categoria
+
